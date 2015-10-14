@@ -1,0 +1,45 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+.links {
+  display: flex;
+}
+.link {
+  position: relative;
+}
+.link a {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: block;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+.link a:hover {
+  background-color: #f2f2f2;
+}
+.link ul {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  display: none;
+  left: 0px;
+  margin: 0px;
+  padding: 0px;
+  position: absolute;
+  top: 100%;
+}
+.link li {
+  cursor: pointer;
+  list-style: none outside none;
+  margin: 0px;
+  padding: 4px 8px;
+}
+.link li:hover {
+  background-color: #f2f2f2;
+}
+.link.is-active a {
+  color: red;
+}
+.link.is-active ul {
+  display: block;
+}
