@@ -5,3 +5,10 @@
 3. Follow the setup instructions inside the folder.
 
 Good luck!
+
+## Challenges by technology
+
+### Javascript
+
+- scrolling-headers
+- menu-buttons
