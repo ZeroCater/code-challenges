@@ -42,12 +42,12 @@ class SolutionsTestCase(unittest.TestCase):
             self.assertTrue(f.get('count') > last)
             last = f.get('count')
 
-    def test_reverse_dict(self):
+    def test_transpose_dict(self):
         d = {'item1': 1, 'item2': 'two', 5: 'fiver'}
-        reversed_dict = self.solutions.reverse_dict(d)
-        self.assertEqual(reversed_dict.get('fiver'), 5)
-        self.assertEqual(reversed_dict.get('two'), 'item2')
-        self.assertEqual(reversed_dict.get(1), 'item1')
+        transposed_dict = self.solutions.transpose_dict(d)
+        self.assertEqual(transposed_dict.get('fiver'), 5)
+        self.assertEqual(transposed_dict.get('two'), 'item2')
+        self.assertEqual(transposed_dict.get(1), 'item1')
 
     def test_week_start_end(self):
         # assume Monday is first day
