@@ -146,3 +146,6 @@ class SolutionsTestCase(unittest.TestCase):
             (u'Building solutions to current business needs and customer demand',
              u'Over-emphasizing "nice-to-haves" and conjecture')
         ])
+
+if __name__ == "__main__":
+    unittest.main()
