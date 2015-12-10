@@ -6,7 +6,7 @@ Your task is to get all the tests passing!
 
 **NOTE** The last spec block is a _bonus_ question!
 
-#### Setup Instructions
+## Setup Instructions
 
 **NOTE** We're assuming you have `ruby` installed on your system, preferrably
 `2.0` or greater.
