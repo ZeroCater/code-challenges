@@ -3,6 +3,8 @@
 Create several links, each of which should open a menu containing several
 actions.
 
+You can use any library/framework you want, ***except jQuery or Zepto***!
+
 ### Objectives
 
 1. Clicking on a link should open the corresponding menu
