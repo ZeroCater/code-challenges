@@ -5,6 +5,10 @@
 1. `npm install`
 1. `npm run dev`
 
+Your app should now be available at `http://localhost:8080`. When you make
+changes to your code, they should *automatically* be pushed to the browser, so
+you won't need to manually reload.
+
 ### Objective
 
 You've been provided with a set of movies I really like, in `data.js`.
