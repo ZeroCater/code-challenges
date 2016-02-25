@@ -37,3 +37,21 @@ You've been provided with a set of movies I really like, in `data.js`.
   values from the data presented in `data.js`. If `data.js` were to change to
   a new set of movies with different information, no new code changes should
   be necessary.
+
+### Notes
+
+I care most about "does it work to specification?". All other concerns are
+secondary (code style, etc.). An ugly solution that works is better than a
+beautiful solution that doesn't.
+
+Feel free to change whatever you want about the boilerplate. Try to avoid
+installing additional libraries--this is all accomplishable using the libraries
+provided.
+
+### Bonus
+
+These aren't necessary, but give you some awesome bonus points!
+
+- Add tests
+- Make the "title" match fuzzy
+- Find (or make) a live API and do the querying over the network
