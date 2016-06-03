@@ -6,9 +6,9 @@ export default class Results extends Component {
 
     return (
       <table>
-        <caption>
-          Replace me with table rows of movies!
-        </caption>
+        {this.props.data.map(movie =>
+          <tr key={movie.title}> {movie.title} </tr>
+        )}
       </table>
     );
   }
