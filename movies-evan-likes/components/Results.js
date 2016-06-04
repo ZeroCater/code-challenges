@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
+import MovieRow from './MovieRow';
 
 export default class Results extends Component {
   render() {
     const { data } = this.props;
+    let rows = this.props.data.map(movie => {
+      return <MovieRow key={movie.title} data={movie} />;
+    });
 
     return (
       <table>
-        <caption>
-          Replace me with table rows of movies!
-        </caption>
+        <tbody>{rows}</tbody>
       </table>
     );
   }
