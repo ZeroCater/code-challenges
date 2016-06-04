@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import MovieRow from './MovieRow';
 
 export default class Results extends Component {
+  constructor(props) {
+    super();
+  }
+
   render() {
-    const { data } = this.props;
     let rows = this.props.data.map(movie => {
       return <MovieRow key={movie.title} data={movie} />;
     });
