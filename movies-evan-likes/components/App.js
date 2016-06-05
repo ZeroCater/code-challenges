@@ -6,6 +6,7 @@ import data from '../data';
 export default class App extends Component {
   constructor() {
     super();
+    this.handleUserInput = this.handleUserInput.bind(this);
     this.state = {
       searchText: '',
       bestPicture: null,
@@ -13,11 +14,17 @@ export default class App extends Component {
     };
   }
 
+  handleUserInput(searchTextInput) {
+    this.setState({
+      searchText: searchTextInput,
+    });
+  }
+
   render() {
     return (
       <div>
         <h1>Movies Evan Likes!</h1>
-        <Filters searchText={this.state.searchText} />
+        <Filters searchText={this.state.searchText} onUserInput={this.handleUserInput} />
         <Results searchText={this.state.searchText} data={data} />
       </div>
     );
