@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GenreFilter from './GenreFilter';
+import WonBestPicture from './WonBestPicture.js';
 
 export default class Filters extends Component {
   constructor(props) {
@@ -17,6 +18,7 @@ export default class Filters extends Component {
           <fieldset>
             Put the filter controls here
             <GenreFilter />
+            <WonBestPicture />
             <button>Filter</button>
           </fieldset>
         </form>
