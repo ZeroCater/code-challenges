@@ -13,12 +13,14 @@ export default class Results extends Component {
 
     return (
       <table>
-        <tr>
-          <th>Movie Title</th>
-          <th>Year</th>
-          <th>Won Best Picture</th>
-          <th>Genre</th>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Movie Title</th>
+            <th>Year</th>
+            <th>Won Best Picture</th>
+            <th>Genre</th>
+          </tr>
+        </tbody>
         <tbody>{rows}</tbody>
       </table>
     );
