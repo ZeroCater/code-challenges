@@ -7,8 +7,11 @@ export default class Results extends Component {
   }
 
   render() {
-    let rows = this.props.data.map(movie => {
-      return <MovieRow key={movie.title} data={movie} />;
+    let rows = [];
+    this.props.data.forEach(movie => {
+      if (movie.title.indexOf(this.props.searchText) !== -1) {
+        rows.push(<MovieRow key={movie.title} data={movie} />);
+      }
     });
 
     return (
