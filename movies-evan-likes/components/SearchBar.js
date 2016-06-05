@@ -7,7 +7,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <input type="text" placeholder="Search by title..." />
+      <input type="text" placeholder="Search by title..." value={this.props.searchText} />
     );
   }
 }
