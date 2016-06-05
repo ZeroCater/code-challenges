@@ -7,7 +7,9 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      movies: data,
+      searchText: '',
+      bestPicture: null,
+      genre: null,
     };
   }
 
@@ -15,8 +17,8 @@ export default class App extends Component {
     return (
       <div>
         <h1>Movies Evan Likes!</h1>
-        <Filters />
-        <Results data={this.state.movies} />
+        <Filters searchText={this.state.searchText} />
+        <Results searchText={this.state.searchText} data={data} />
       </div>
     );
   }
