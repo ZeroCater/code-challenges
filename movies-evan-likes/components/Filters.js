@@ -18,7 +18,7 @@ export default class Filters extends Component {
         <form onSubmit={this.handleSubmit}>
           <fieldset>
             <GenreFilter />
-            <SearchBar searchText={this.props.searchText} />
+            <SearchBar searchText={this.props.searchText} onUserInput={this.props.onUserInput} />
             <WonBestPicture />
             <button>Filter</button>
           </fieldset>
