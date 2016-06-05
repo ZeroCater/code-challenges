@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class GenreFilter extends Component {
+export default class WonBestPicture extends Component {
   constructor(props) {
     super();
   }
