@@ -19,7 +19,11 @@ export default class Filters extends Component {
           <fieldset>
             <GenreFilter />
             <SearchBar searchText={this.props.searchText} onUserInput={this.props.onUserInput} />
-            <WonBestPicture />
+            <WonBestPicture
+              searchText={this.props.searchText}
+              bestPicture={this.props.bestPicture}
+              onUserInput={this.props.onUserInput}
+            />
             <button>Filter</button>
           </fieldset>
         </form>
