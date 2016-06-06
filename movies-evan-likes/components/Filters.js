@@ -11,8 +11,6 @@ export default class Filters extends Component {
       bestPicture: false,
       genre: 'null',
     };
-    console.log('This is the state', this.state);
-    console.log('This are the props', this.props);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
