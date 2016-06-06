@@ -15,7 +15,6 @@ export default class SearchBar extends Component {
       <input
         type="text"
         placeholder="Search by title..."
-        value={this.props.searchText}
         ref="searchTextInput"
         onChange={this.handleChange}
       />

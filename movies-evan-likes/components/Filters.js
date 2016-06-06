@@ -6,10 +6,27 @@ import SearchBar from './SearchBar.js';
 export default class Filters extends Component {
   constructor(props) {
     super();
+    this.state = {
+      searchText: '',
+      bestPicture: false,
+      genre: 'null',
+    };
+    this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleUserInput(searchTextInput, bestPictureInput, genreInput) {
+    console.log('Changing the state', searchTextInput, bestPictureInput, genreInput);
+    this.setState({
+      searchText: searchTextInput,
+      bestPicture: bestPictureInput,
+      genre: genreInput,
+    });
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.props.setFilteredResults(this.state.searchText, this.state.bestPicture, this.state.genre);
   }
 
   render() {
@@ -17,12 +34,22 @@ export default class Filters extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <fieldset>
-            <GenreFilter />
-            <SearchBar searchText={this.props.searchText} onUserInput={this.props.onUserInput} />
+            <GenreFilter
+              searchText={this.state.searchText}
+              bestPicture={this.state.bestPicture}
+              genre={this.state.genre}
+              onUserInput={this.handleUserInput}
+              data={this.props.data}
+            />
+            <SearchBar
+              searchText={this.state.searchText}
+              onUserInput={this.handleUserInput}
+            />
             <WonBestPicture
-              searchText={this.props.searchText}
-              bestPicture={this.props.bestPicture}
-              onUserInput={this.props.onUserInput}
+              searchText={this.state.searchText}
+              bestPicture={this.state.bestPicture}
+              genre={this.state.genre}
+              onUserInput={this.handleUserInput}
             />
             <button>Filter</button>
           </fieldset>

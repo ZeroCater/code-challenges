@@ -7,7 +7,7 @@ export default class WonBestPicture extends Component {
   }
 
   handleChange() {
-    this.props.onUserInput(this.props.searchText, this.refs.bestPictureInput.checked);
+    this.props.onUserInput(this.props.searchText, this.refs.bestPictureInput.checked, this.props.genre);
   }
 
   render() {
