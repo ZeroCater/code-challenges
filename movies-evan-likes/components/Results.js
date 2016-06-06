@@ -20,7 +20,7 @@ export default class Results extends Component {
     // If the filtered state is unchanged, render all the movies
     // Otherwise, compare the movie to the props values and push to rows array
 
-    if ((this.props.genre === 'null') && !this.props.bestpicture && (this.props.searchText.length < 1)) {
+    if ((this.props.genre === 'null') && !this.props.bestPicture && (this.props.searchText.length < 1)) {
       this.props.data.forEach(movie => {
         rows.push(movie);
       });
