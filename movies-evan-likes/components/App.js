@@ -6,16 +6,15 @@ import data from '../data';
 export default class App extends Component {
   constructor() {
     super();
-    console.log('STATE', this.state);
-    this.handleUserInput = this.handleUserInput.bind(this);
     this.state = {
       searchText: '',
       bestPicture: false,
       genre: 'null',
     };
+    this.setFilteredResults = this.setFilteredResults.bind(this);
   }
 
-  handleUserInput(searchTextInput, bestPictureInput, genreInput) {
+  setFilteredResults(searchTextInput, bestPictureInput, genreInput) {
     this.setState({
       searchText: searchTextInput,
       bestPicture: bestPictureInput,
@@ -28,10 +27,7 @@ export default class App extends Component {
       <div>
         <h1>Movies Evan Likes!</h1>
         <Filters
-          searchText={this.state.searchText}
-          bestPicture={this.state.bestPicture}
-          genre={this.state.genre}
-          onUserInput={this.handleUserInput}
+          setFilteredResults={this.setFilteredResults}
           data={data}
         />
         <Results
