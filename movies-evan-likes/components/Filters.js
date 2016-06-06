@@ -11,9 +11,14 @@ export default class Filters extends Component {
       bestPicture: false,
       genre: 'null',
     };
+    console.log('This is the state', this.state);
+    console.log('This are the props', this.props);
+    this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleUserInput(searchTextInput, bestPictureInput, genreInput) {
+    console.log('Changing the state', searchTextInput, bestPictureInput, genreInput);
     this.setState({
       searchText: searchTextInput,
       bestPicture: bestPictureInput,
@@ -40,7 +45,7 @@ export default class Filters extends Component {
             />
             <SearchBar
               searchText={this.state.searchText}
-              onUserInput={this.state.handleUserInput}
+              onUserInput={this.handleUserInput}
             />
             <WonBestPicture
               searchText={this.state.searchText}
