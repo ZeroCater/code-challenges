@@ -14,7 +14,7 @@ export default class Decade extends Component {
     let years = [];
     let decades = []
 
-    // Loop through each movie and record their years in an object overwriting and duplicates
+    // Loop through each movie and record their years in an object overwriting duplicates
     this.props.data.forEach(movie => {
       if (years.indexOf(movie.year) === -1) {
         years.push(movie.year);
@@ -33,7 +33,7 @@ export default class Decade extends Component {
       <div className="decade-selector">
         <select ref="decadeInput" onChange={this.handleChange}>
           <option key="all" value="null">-</option>
-          {options.map(genre => <option key={decades} value={decades}>{decades}</option>)}
+          {decades.map(decade => <option key={decade} value={decade}>{decade}</option>)}
         </select>
       </div>
     );
