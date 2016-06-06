@@ -30,6 +30,7 @@ export default class App extends Component {
           searchText={this.state.searchText}
           bestPicture={this.state.bestPicture}
           onUserInput={this.handleUserInput}
+          data={data}
         />
         <Results
           searchText={this.state.searchText}
