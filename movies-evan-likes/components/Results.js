@@ -9,13 +9,28 @@ export default class Results extends Component {
   render() {
     let rows = [];
 
-    // create conditional that checks if any of the intial values are different, if so, proceed with filter, if not, render all
-
+    // If the filtered state is unchanged, render all the movies
+    // Otherwise, compare the movie to the props values and push to rows array
+    
     if ((this.props.genre === 'null') && !this.props.bestpicture && (this.props.searchText.length < 1)) {
       this.props.data.forEach(movie => {
         rows.push(movie);
       });
+    } else {
+      this.props.data.forEach(movie => {
+        if (movie.genre === this.props.genre) {
+          rows.push(movie);
+        }
+        if (movie.title.indexOf(this.props.searchText) !== -1) {
+          rows.push(movie);
+        }
+        if (movie.wonBestPicture === this.props.bestPicture) {
+          rows.push(movie);
+        }
+      });
     }
+    // Go through each movie and check if any of the filters apply before adding to the rows array
+
 
       // if ((this.props.genre !== 'null') && (movie.genre !== this.props.genre)) {
       //   return;
