@@ -6,19 +6,20 @@ import data from '../data';
 export default class App extends Component {
   constructor() {
     super();
+    console.log('STATE', this.state);
     this.handleUserInput = this.handleUserInput.bind(this);
     this.state = {
       searchText: '',
       bestPicture: false,
-      genre: null,
+      genre: 'null',
     };
   }
 
-  handleUserInput(searchTextInput, bestPictureInput) {
-    console.log('Best Picture?', bestPictureInput);
+  handleUserInput(searchTextInput, bestPictureInput, genreInput) {
     this.setState({
       searchText: searchTextInput,
       bestPicture: bestPictureInput,
+      genre: genreInput,
     });
   }
 
@@ -29,12 +30,14 @@ export default class App extends Component {
         <Filters
           searchText={this.state.searchText}
           bestPicture={this.state.bestPicture}
+          genre={this.state.genre}
           onUserInput={this.handleUserInput}
           data={data}
         />
         <Results
           searchText={this.state.searchText}
           bestPicture={this.state.bestPicture}
+          genre={this.state.genre}
           data={data}
         />
       </div>

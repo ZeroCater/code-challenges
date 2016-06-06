@@ -9,10 +9,23 @@ export default class Results extends Component {
   render() {
     let rows = [];
     this.props.data.forEach(movie => {
-      if (movie.title.indexOf(this.props.searchText) === -1 || (!movie.wonBestPicture && this.props.bestPicture)) {
+
+      if ((this.props.genre !== 'null') && (movie.genre !== this.props.genre)) {
         return;
       }
-      rows.push(<MovieRow key={movie.title} data={movie} />);
+      
+      if (!movie.wonBestPicture && this.props.bestPicture) {
+        return;
+      }
+      
+      if (movie.title.indexOf(this.props.searchText) === -1) {
+        return;
+      }
+
+
+      if (rows.indexOf(movie) === -1) {
+        rows.push(movie);
+      }
     });
 
     return (
@@ -25,7 +38,7 @@ export default class Results extends Component {
             <th>Genre</th>
           </tr>
         </tbody>
-        <tbody>{rows}</tbody>
+        <tbody>{rows.map(movie => <MovieRow key={movie.title} data={movie} />)}</tbody>
       </table>
     );
   }

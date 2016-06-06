@@ -17,11 +17,18 @@ export default class Filters extends Component {
       <div>
         <form onSubmit={this.handleSubmit}>
           <fieldset>
-            <GenreFilter data={this.props.data} />
+            <GenreFilter
+              searchText={this.props.searchText}
+              bestPicture={this.props.bestPicture}
+              genre={this.props.genre}
+              onUserInput={this.props.onUserInput}
+              data={this.props.data}
+            />
             <SearchBar searchText={this.props.searchText} onUserInput={this.props.onUserInput} />
             <WonBestPicture
               searchText={this.props.searchText}
               bestPicture={this.props.bestPicture}
+              genre={this.props.genre}
               onUserInput={this.props.onUserInput}
             />
             <button>Filter</button>

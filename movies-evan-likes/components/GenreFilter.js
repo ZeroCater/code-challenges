@@ -3,6 +3,11 @@ import React, { Component } from 'react';
 export default class GenreFilter extends Component {
   constructor(props) {
     super();
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange() {
+    this.props.onUserInput(this.props.searchText, this.props.bestPicture, this.refs.genreInput.value);
   }
 
   render() {
@@ -16,8 +21,8 @@ export default class GenreFilter extends Component {
 
     return (
       <div className="genre-selector">
-        <select>
-          <option key="all" value="all">all</option>
+        <select ref="genreInput" onChange={this.handleChange}>
+          <option key="all" value="null">-</option>
           {options.map(genre => <option key={genre} value={genre}>{genre}</option>)}
         </select>
       </div>
