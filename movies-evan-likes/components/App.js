@@ -9,14 +9,16 @@ export default class App extends Component {
     this.handleUserInput = this.handleUserInput.bind(this);
     this.state = {
       searchText: '',
-      bestPicture: null,
+      bestPicture: false,
       genre: null,
     };
   }
 
-  handleUserInput(searchTextInput) {
+  handleUserInput(searchTextInput, bestPictureInput) {
+    console.log('Best Picture?', bestPictureInput);
     this.setState({
       searchText: searchTextInput,
+      bestPicture: bestPictureInput,
     });
   }
 
@@ -24,8 +26,16 @@ export default class App extends Component {
     return (
       <div>
         <h1>Movies Evan Likes!</h1>
-        <Filters searchText={this.state.searchText} onUserInput={this.handleUserInput} />
-        <Results searchText={this.state.searchText} data={data} />
+        <Filters
+          searchText={this.state.searchText}
+          bestPicture={this.state.bestPicture}
+          onUserInput={this.handleUserInput}
+        />
+        <Results
+          searchText={this.state.searchText}
+          bestPicture={this.state.bestPicture}
+          data={data}
+        />
       </div>
     );
   }
