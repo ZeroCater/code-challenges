@@ -9,9 +9,10 @@ export default class Results extends Component {
   render() {
     let rows = [];
     this.props.data.forEach(movie => {
-      if (movie.title.indexOf(this.props.searchText) !== -1) {
-        rows.push(<MovieRow key={movie.title} data={movie} />);
+      if (movie.title.indexOf(this.props.searchText) === -1 || (!movie.wonBestPicture && this.props.bestPicture)) {
+        return;
       }
+      rows.push(<MovieRow key={movie.title} data={movie} />);
     });
 
     return (
