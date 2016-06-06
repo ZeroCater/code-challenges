@@ -6,11 +6,19 @@ export default class GenreFilter extends Component {
   }
 
   render() {
+    let options = [];
+
+    this.props.data.forEach(movie => {
+      if (options.indexOf(movie.genre) === -1) {
+        options.push(movie.genre);
+      }
+    });
+
     return (
       <div className="genre-selector">
         <select>
-          <option value="1">A Movie</option>
-          <option value="2">Another Movie</option>
+          <option key="all" value="all">all</option>
+          {options.map(genre => <option key={genre} value={genre}>{genre}</option>)}
         </select>
       </div>
     );
