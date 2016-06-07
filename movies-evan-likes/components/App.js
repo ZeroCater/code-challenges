@@ -8,17 +8,19 @@ export default class App extends Component {
     super();
     this.state = {
       searchText: '',
-      bestPicture: false,
-      genre: 'null',
+      bestPicture: '',
+      genre: '',
+      decade: '',
     };
     this.setFilteredResults = this.setFilteredResults.bind(this);
   }
 
-  setFilteredResults(searchTextInput, bestPictureInput, genreInput) {
+  setFilteredResults(searchTextInput, bestPictureInput, genreInput, decadeInput) {
     this.setState({
       searchText: searchTextInput,
       bestPicture: bestPictureInput,
       genre: genreInput,
+      decade: decadeInput,
     });
   }
 
@@ -34,6 +36,7 @@ export default class App extends Component {
           searchText={this.state.searchText}
           bestPicture={this.state.bestPicture}
           genre={this.state.genre}
+          decade={this.state.decade}
           data={data}
         />
       </div>
