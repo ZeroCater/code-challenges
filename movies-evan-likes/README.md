@@ -29,7 +29,8 @@ You've been provided with a set of movies I really like, in `data.js`.
   - **by matching title**: Should only show movies with a title containing the
     user's input. This should be implemented as a text input.
 
-    *Note*: A literal substring match is totally fine.
+    *Note*: A literal substring match is totally fine. However, the search 
+    **MUST** be case-insensitive.
 
   The filters do not need to be "live": you only need to apply them when the
   user clicks the <kbd>Filter</kbd> button.
