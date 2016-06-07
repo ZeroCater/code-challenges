@@ -32,7 +32,7 @@ export default class Decade extends Component {
     return (
       <div className="decade-selector">
         <select ref="decadeInput" onChange={this.handleChange}>
-          <option key="all" value="null">-</option>
+          <option key="all" value="null">Pick a decade</option>
           {decades.map(decade => <option key={decade} value={decade}>{decade}</option>)}
         </select>
       </div>

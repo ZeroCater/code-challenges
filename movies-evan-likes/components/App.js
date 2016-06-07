@@ -12,6 +12,7 @@ export default class App extends Component {
       genre: '',
       decade: '',
     };
+
     this.setFilteredResults = this.setFilteredResults.bind(this);
   }
 
