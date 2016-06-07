@@ -22,7 +22,7 @@ export default class GenreFilter extends Component {
     return (
       <div className="genre-selector">
         <select ref="genreInput" onChange={this.handleChange}>
-          <option key="all" value="null">-</option>
+          <option key="all" value="null">Pick a genre</option>
           {options.map(genre => <option key={genre} value={genre}>{genre}</option>)}
         </select>
       </div>
