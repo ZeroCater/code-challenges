@@ -25,7 +25,7 @@ export default class Results extends Component {
       if (movie.wonBestPicture && this.props.bestPicture) {
         movieTitles[movie.title] += 1;
       }
-      if (movie.title === this.props.searchText) {
+      if (movie.title.indexOf(this.props.searchText) !== -1) {
         movieTitles[movie.title] += 1;
       }
       if ((Math.floor(movie.year / 10) * 10) === Number(this.props.decade)) {
