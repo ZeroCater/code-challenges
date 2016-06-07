@@ -7,7 +7,7 @@ export default class GenreFilter extends Component {
   }
 
   handleChange() {
-    this.props.onUserInput(this.props.searchText, this.props.bestPicture, this.refs.genreInput.value);
+    this.props.onUserInput(this.props.searchText, this.props.bestPicture, this.refs.genreInput.value, this.props.decade);
   }
 
   render() {
