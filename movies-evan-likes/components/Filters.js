@@ -9,9 +9,9 @@ export default class Filters extends Component {
     super();
     this.state = {
       searchText: '',
-      bestPicture: false,
-      genre: 'null',
-      decade: 'null',
+      bestPicture: '',
+      genre: '',
+      decade: '',
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -19,7 +19,6 @@ export default class Filters extends Component {
   }
 
   handleUserInput(searchTextInput, bestPictureInput, genreInput, decadeInput) {
-    console.log('Changing the state', searchTextInput, bestPictureInput, genreInput);
     this.setState({
       searchText: searchTextInput,
       bestPicture: bestPictureInput,
@@ -42,6 +41,7 @@ export default class Filters extends Component {
               searchText={this.state.searchText}
               bestPicture={this.state.bestPicture}
               genre={this.state.genre}
+              decade={this.state.decade}
               onUserInput={this.handleUserInput}
               data={this.props.data}
             />
@@ -49,6 +49,7 @@ export default class Filters extends Component {
               searchText={this.state.searchText}
               bestPicture={this.state.bestPicture}
               genre={this.state.genre}
+              decade={this.state.decade}
               onUserInput={this.handleUserInput}
               data={this.props.data}
             />
@@ -60,6 +61,7 @@ export default class Filters extends Component {
               searchText={this.state.searchText}
               bestPicture={this.state.bestPicture}
               genre={this.state.genre}
+              decade={this.state.decade}
               onUserInput={this.handleUserInput}
             />
             <button>Filter</button>
