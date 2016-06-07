@@ -12,7 +12,7 @@ export default class Decade extends Component {
 
   render() {
     let years = [];
-    let decades = []
+    let decades = [];
 
     // Loop through each movie and record their years in an object overwriting duplicates
     this.props.data.forEach(movie => {
@@ -23,7 +23,7 @@ export default class Decade extends Component {
 
     // Loop through each of the years in the years array, and use Math.floor to calculate decade and push to decades array
     years.forEach(year => {
-      let decade = decade = Math.floor(year/10)*10;
+      let decade = Math.floor(year / 10) * 10;
       if (decades.indexOf(decade) === -1) {
         decades.push(decade);
       }
