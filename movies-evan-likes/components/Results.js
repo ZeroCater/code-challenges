@@ -22,7 +22,7 @@ export default class Results extends Component {
       if (movie.genre === this.props.genre) {
         movieTitles[movie.title] += 1;
       }
-      if (movie.wonBestPicture === this.props.bestPicture) {
+      if (movie.wonBestPicture && this.props.bestPicture) {
         movieTitles[movie.title] += 1;
       }
       if (movie.title === this.props.searchText) {
@@ -35,7 +35,8 @@ export default class Results extends Component {
 
 
     // Initially all movies in movieTitles have a value of 0 so they all get rendered.
-    // After changes are made to the state we push the highest valued keys to the rows array for rendering
+    // After changes are made to the state we push the highest numerically valued keys to the rows array for rendering
+    // The highest numercially valued keys are the ones that match the most filters 
     // ===================================================================================================
 
     //Set the high count value
