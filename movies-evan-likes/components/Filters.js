@@ -9,7 +9,7 @@ export default class Filters extends Component {
     super();
     this.state = {
       searchText: '',
-      bestPicture: '',
+      bestPicture: false,
       genre: '',
       decade: '',
     };
