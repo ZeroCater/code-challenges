@@ -8,6 +8,24 @@ export default class Results extends Component {
 
   render() {
     let rows = [];
+    let filteredState = {};
+
+    // Capture the changed state properties and values into filteredState
+    if (this.props.searchText !== '') {
+      filteredState[searchText] = this.props.searchText;
+    }
+
+    if (this.props.bestPicture) {
+      filteredState[bestPicture] = this.props.bestPicture;
+    }
+
+    if (this.props.genre !== '') {
+     filteredState[genre] = this.props.genre;
+    }
+
+    if (this.props.decade !== '') {
+      filteredState[decade] = this.props.decade;
+    }
     // let filteredMovies = [];
     // let counter = 0;
 
@@ -20,13 +38,12 @@ export default class Results extends Component {
     // Filter check to see if the a movie matches the current criteria
 
     this.props.data.forEach(movie => {
-      if ( (this.props.searchText === '') && (this.props.bestPicture === false) && (this.props.genre === '') && (this.props.decade === '') ) {
-        rows.push(movie)
-      }
+      if ((this.props.searchText === '') && (this.props.bestPicture === false) && (this.props.genre === '') && (this.props.decade === '')) {
+        rows.push(movie)      }
 
-      if ( (movie.genre === this.props.genre) && (movie.wonBestPicture && this.props.bestPicture) && (movie.title.indexOf(this.props.searchText) !== -1) && (Math.floor(movie.year / 10) * 10) === Number(this.props.decade) ) {
+      if ((movie.genre === this.props.genre) && (movie.wonBestPicture && this.props.bestPicture) && (movie.title.indexOf(this.props.searchText) !== -1) && (Math.floor(movie.year / 10) * 10) === Number(this.props.decade)) {
         rows.push(movie);
-      } 
+      }
      
       
     });
