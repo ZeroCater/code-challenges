@@ -9,8 +9,8 @@ export default class App extends Component {
     this.state = {
       searchText: '',
       bestPicture: false,
-      genre: '',
-      decade: '',
+      genre: 'null',
+      decade: 'null',
     };
 
     this.setFilteredResults = this.setFilteredResults.bind(this);
