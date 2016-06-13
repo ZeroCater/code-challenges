@@ -10,8 +10,8 @@ export default class Filters extends Component {
     this.state = {
       searchText: '',
       bestPicture: false,
-      genre: '',
-      decade: '',
+      genre: 'null',
+      decade: 'null',
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
