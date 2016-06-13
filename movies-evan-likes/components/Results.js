@@ -34,8 +34,14 @@ export default class Results extends Component {
       // Otherwise, check the movie against the filteredState object and push to rows aray if all the key value pairs match
       } else {
         for (var key in filteredState) {
-          if (movie[key] !== filteredState[key]) {
-            return;
+          if (key === 'decade') {
+            if ((Math.floor(movie.year / 10) * 10) != filteredState[key]) {
+              return;
+            }
+          } else {
+            if (movie[key] !== filteredState[key]) {
+              return;
+            }
           }
         }
         rows.push(movie);
