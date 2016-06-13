@@ -7,25 +7,30 @@ export default class Results extends Component {
   }
 
   render() {
+    console.log('The is the initial result render', this.props.searchText, this.props.bestPicture, this.props.genre, this.props.decade)
     let rows = [];
     let filteredState = {};
 
     // Capture the changed state properties and values into filteredState
     if (this.props.searchText !== '') {
-      filteredState[searchText] = this.props.searchText;
+      filteredState['searchText'] = this.props.searchText;
     }
 
     if (this.props.bestPicture) {
-      filteredState[bestPicture] = this.props.bestPicture;
+      filteredState['wonBestPicture'] = this.props.bestPicture;
     }
 
-    if (this.props.genre !== '') {
-     filteredState[genre] = this.props.genre;
+    if (this.props.genre !== 'null') {
+      filteredState['genre'] = this.props.genre;
     }
 
-    if (this.props.decade !== '') {
-      filteredState[decade] = this.props.decade;
+    if (this.props.decade !== 'null') {
+      filteredState['decade'] = this.props.decade;
     }
+
+    console.log('The is after conditionals in result render', this.props.searchText, this.props.bestPicture, this.props.genre, this.props.decade)
+    console.log(filteredState)
+
     // let filteredMovies = [];
     // let counter = 0;
 
@@ -38,14 +43,28 @@ export default class Results extends Component {
     // Filter check to see if the a movie matches the current criteria
 
     this.props.data.forEach(movie => {
-      if ((this.props.searchText === '') && (this.props.bestPicture === false) && (this.props.genre === '') && (this.props.decade === '')) {
-        rows.push(movie)      }
-
-      if ((movie.genre === this.props.genre) && (movie.wonBestPicture && this.props.bestPicture) && (movie.title.indexOf(this.props.searchText) !== -1) && (Math.floor(movie.year / 10) * 10) === Number(this.props.decade)) {
+      // console.log('This is the genre', this.props.genre)
+      // If no filters exist in filteredState, render all the movies
+      if (Object.keys(filteredState).length === 0) {
+        rows.push(movie);
+      } else {
+        //rows.push(movie);
+        // Otherwise, check the movie against the filteredState object and push to rows if there is a match
+        for (var key in filteredState) {
+          console.log('This is the filtered state', filteredState)
+          if (movie[key] !== filteredState[key]) {
+          // find the indexOf that movie and then splice it from that array
+            return;
+          }
+          console.log('This is the rows array', rows);
+          // let index = rows.indexOf(movie);
+          // rows.splice(index, 1);
+          // break;
+        }
         rows.push(movie);
       }
-     
-      
+
+      // Otherwise, populate rows and apply filter
     });
 
 
