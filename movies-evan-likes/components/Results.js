@@ -10,31 +10,32 @@ export default class Results extends Component {
     let rows = [];
     let filteredState = {};
 
-    // Capture the changed state properties and values into filteredState
+    // Captures the current state if different than initial state
+    // ===========================================================
     if (this.props.searchText !== '') {
       filteredState['searchText'] = this.props.searchText;
     }
-
     if (this.props.bestPicture) {
       filteredState['wonBestPicture'] = this.props.bestPicture;
     }
-
     if (this.props.genre !== 'null') {
       filteredState['genre'] = this.props.genre;
     }
-
     if (this.props.decade !== 'null') {
       filteredState['decade'] = this.props.decade;
     }
 
+    // Iterates over movies in data set and renders all movies or checks against filteredState for rendering
+    // =====================================================================================================
     this.props.data.forEach(movie => {
       // If no filters exist in filteredState, render all the movies
       if (Object.keys(filteredState).length === 0) {
         rows.push(movie);
-      // Otherwise, check the movie against the filteredState object and push to rows aray if all the key value pairs match
+      // Otherwise, check the movie against the filteredState object
+      // Skip movies where a key and value does not match
       } else {
         for (var key in filteredState) {
-          //debugger
+          // Separates decade and searchText due to special cases / property names that need to be checked for
           if (key === 'decade' || key === 'searchText') {
             if (key === 'decade') {
               if ((Math.floor(movie.year / 10) * 10) !== Number(filteredState[key])) {
@@ -48,12 +49,14 @@ export default class Results extends Component {
                 return;
               }
             }
+          // The rest of the filters have the same key value naming. Checks for eqaulity with movies.
           } else {
             if (movie[key] !== filteredState[key]) {
               return;
             }
           }
         }
+        // If the movie made it through all the filtered checks above then add it to the rows array
         rows.push(movie);
       }
     });
