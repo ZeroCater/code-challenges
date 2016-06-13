@@ -34,19 +34,20 @@ export default class Results extends Component {
       // Otherwise, check the movie against the filteredState object and push to rows aray if all the key value pairs match
       } else {
         for (var key in filteredState) {
-          if (key === 'decade') {
-            if ((Math.floor(movie.year / 10) * 10) != filteredState[key]) {
-              return;
+          //debugger
+          if (key === 'decade' || key === 'searchText') {
+            if (key === 'decade') {
+              if ((Math.floor(movie.year / 10) * 10) !== Number(filteredState[key])) {
+                return;
+              }
             }
-          } else if (key === 'searchText') {
+            if (key === 'searchText') {
               let lowerMovieTitle = movie.title.toLowerCase();
-              console.log(lowerMovieTitle, typeof lowerMovieTitle);
               let lowerSearchText = filteredState[key].toLowerCase();
-              console.log(lowerSearchText, typeof lowerMovieTitle);
-              console.log(lowerMovieTitle.indexOf(lowerSearchText) === -1);
               if (lowerMovieTitle.indexOf(lowerSearchText) === -1) {
                 return;
               }
+            }
           } else {
             if (movie[key] !== filteredState[key]) {
               return;
