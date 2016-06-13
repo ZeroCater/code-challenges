@@ -7,7 +7,7 @@ export default class Decade extends Component {
   }
 
   handleChange() {
-    this.props.onUserInput(this.props.searchText, this.props.bestPicture, this.props.genreInput, this.refs.decadeInput.value );
+    this.props.onUserInput(this.props.searchText, this.props.bestPicture, this.props.genre, this.refs.decadeInput.value );
   }
 
   render() {
