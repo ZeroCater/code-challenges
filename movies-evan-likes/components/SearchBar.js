@@ -7,7 +7,7 @@ export default class SearchBar extends Component {
   }
 
   handleChange() {
-    this.props.onUserInput(this.refs.searchTextInput.value);
+    this.props.onUserInput(this.refs.searchTextInput.value, this.props.bestPicture, this.props.genre, this.props.decade);
   }
 
   render() {
