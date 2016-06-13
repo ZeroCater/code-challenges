@@ -38,6 +38,15 @@ export default class Results extends Component {
             if ((Math.floor(movie.year / 10) * 10) != filteredState[key]) {
               return;
             }
+          } else if (key === 'searchText') {
+              let lowerMovieTitle = movie.title.toLowerCase();
+              console.log(lowerMovieTitle, typeof lowerMovieTitle);
+              let lowerSearchText = filteredState[key].toLowerCase();
+              console.log(lowerSearchText, typeof lowerMovieTitle);
+              console.log(lowerMovieTitle.indexOf(lowerSearchText) === -1);
+              if (lowerMovieTitle.indexOf(lowerSearchText) === -1) {
+                return;
+              }
           } else {
             if (movie[key] !== filteredState[key]) {
               return;
