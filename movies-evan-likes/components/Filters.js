@@ -9,9 +9,9 @@ export default class Filters extends Component {
     super();
     this.state = {
       searchText: '',
-      bestPicture: '',
-      genre: '',
-      decade: '',
+      bestPicture: false,
+      genre: 'null',
+      decade: 'null',
     };
 
     this.handleUserInput = this.handleUserInput.bind(this);
@@ -55,6 +55,9 @@ export default class Filters extends Component {
             />
             <SearchBar
               searchText={this.state.searchText}
+              bestPicture={this.state.bestPicture}
+              genre={this.state.genre}
+              decade={this.state.decade}
               onUserInput={this.handleUserInput}
             />
             <WonBestPicture

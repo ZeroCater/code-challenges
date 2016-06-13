@@ -8,9 +8,9 @@ export default class App extends Component {
     super();
     this.state = {
       searchText: '',
-      bestPicture: '',
-      genre: '',
-      decade: '',
+      bestPicture: false,
+      genre: 'null',
+      decade: 'null',
     };
 
     this.setFilteredResults = this.setFilteredResults.bind(this);

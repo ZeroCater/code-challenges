@@ -8,59 +8,55 @@ export default class Results extends Component {
 
   render() {
     let rows = [];
-    let filteredMovies = [];
-    let counter = 0;
+    let filteredState = {};
 
-    // Get all the movie titles and store them as a key with value 0
-    let movieTitles = {};
-    this.props.data.forEach(movie => {
-      movieTitles[movie.title] = 0;
-    });
-
-    // Filter check to see if the a movie matches the current criteria
-    this.props.data.forEach(movie => {
-      if (movie.genre === this.props.genre) {
-        movieTitles[movie.title] += 1;
-      }
-      if (movie.wonBestPicture && this.props.bestPicture) {
-        movieTitles[movie.title] += 1;
-      }
-      if (movie.title.indexOf(this.props.searchText) !== -1) {
-        movieTitles[movie.title] += 1;
-      }
-      if ((Math.floor(movie.year / 10) * 10) === Number(this.props.decade)) {
-        movieTitles[movie.title] += 1;
-      }
-    });
-
-
-    // Initially all movies in movieTitles have a value of 0 so they all get rendered.
-    // After changes are made to the state we push the highest numerically valued keys to the rows array for rendering
-    // The highest numercially valued keys are the ones that match the most filters 
-    // ===================================================================================================
-
-    //Set the high count value
-    for (var key in movieTitles) {
-      if (movieTitles[key] > counter) {
-        counter = movieTitles[key];
-      }
+    // Capture the changed state properties and values into filteredState
+    if (this.props.searchText !== '') {
+      filteredState['searchText'] = this.props.searchText;
     }
 
-    // Loop thorugh the movieTitles object and push them to a the filteredMovies array
-    for (var key in movieTitles) {
-      if (movieTitles[key] === counter) {
-        filteredMovies.push(key);
-      }
+    if (this.props.bestPicture) {
+      filteredState['wonBestPicture'] = this.props.bestPicture;
     }
 
-    // Loop through the data checking against the filtered movies array and push the movie objects to rows array
-    for (var i = 0; i < this.props.data.length; i++) {
-      for (var j = 0; j < filteredMovies.length; j++) {
-        if (this.props.data[i].title === filteredMovies[j]) {
-          rows.push(this.props.data[i]);
+    if (this.props.genre !== 'null') {
+      filteredState['genre'] = this.props.genre;
+    }
+
+    if (this.props.decade !== 'null') {
+      filteredState['decade'] = this.props.decade;
+    }
+
+    this.props.data.forEach(movie => {
+      // If no filters exist in filteredState, render all the movies
+      if (Object.keys(filteredState).length === 0) {
+        rows.push(movie);
+      // Otherwise, check the movie against the filteredState object and push to rows aray if all the key value pairs match
+      } else {
+        for (var key in filteredState) {
+          //debugger
+          if (key === 'decade' || key === 'searchText') {
+            if (key === 'decade') {
+              if ((Math.floor(movie.year / 10) * 10) !== Number(filteredState[key])) {
+                return;
+              }
+            }
+            if (key === 'searchText') {
+              let lowerMovieTitle = movie.title.toLowerCase();
+              let lowerSearchText = filteredState[key].toLowerCase();
+              if (lowerMovieTitle.indexOf(lowerSearchText) === -1) {
+                return;
+              }
+            }
+          } else {
+            if (movie[key] !== filteredState[key]) {
+              return;
+            }
+          }
         }
+        rows.push(movie);
       }
-    }
+    });
 
     return (
       <table>
