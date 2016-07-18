@@ -4,12 +4,42 @@ import Results from './Results';
 import data from '../data';
 
 export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      searchText: '',
+      bestPicture: false,
+      genre: 'null',
+      decade: 'null',
+    };
+
+    this.setFilteredResults = this.setFilteredResults.bind(this);
+  }
+
+  setFilteredResults(searchTextInput, bestPictureInput, genreInput, decadeInput) {
+    this.setState({
+      searchText: searchTextInput,
+      bestPicture: bestPictureInput,
+      genre: genreInput,
+      decade: decadeInput,
+    });
+  }
+
   render() {
     return (
       <div>
         <h1>Movies Evan Likes!</h1>
-        <Filters />
-        <Results data={data} />
+        <Filters
+          setFilteredResults={this.setFilteredResults}
+          data={data}
+        />
+        <Results
+          searchText={this.state.searchText}
+          bestPicture={this.state.bestPicture}
+          genre={this.state.genre}
+          decade={this.state.decade}
+          data={data}
+        />
       </div>
     );
   }
